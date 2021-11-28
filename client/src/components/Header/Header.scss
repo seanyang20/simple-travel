@@ -1,0 +1,30 @@
+@use '../../styles/partials/mixins' as *;
+@use '../../styles/partials/topography' as *;
+@use '../../styles/partials/variables' as *;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; 
+}
+.header {
+  background-color: beige;
+  &__navbarList {
+    @include flex (row, space-evenly, center);
+    padding-bottom: 1rem;
+  }
+
+  &__navbarItem {
+    font-size: 1.8rem;
+    cursor: pointer;
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    padding: 1rem 0 1rem 0;
+    // &:hover {
+    //   font-size: 1.3rem;
+    //   transition: 1.3s;
+    // }
+  }
+}
