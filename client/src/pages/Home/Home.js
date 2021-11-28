@@ -1,16 +1,24 @@
 import React from "react";
 import "./Home.scss";
-import { Link } from "react-router-dom";
-
-
+import { Link, useHistory} from "react-router-dom";
 
 export default function Home() {
-  
+    const history = useHistory();
 
-    return (
-        <header className="home">
-            
-        </header>
-    );
+    function handleClick() {
+      history.push("/itinerary");
+    }
+  return (
+    <header className="home">
+      <article className="home__textContainer">
+        <h1 className="home__text">SimpleTravel</h1>
+        <p>Find or create your own ideal travel itinerary</p>
+        <article>
+          <button className="home__btn" onClick={() => handleClick()}>
+            Get Started
+          </button>
+        </article>
+      </article>
+    </header>
+  );
 }
-

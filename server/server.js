@@ -5,12 +5,15 @@ const fs = require("fs");
 const cors = require('cors');
 const morgan = require('morgan');
 const path = require("path");
+const knex = require('knex')(require('./knexfile').development); // import knex with db config
 
 app.use(express.static(path.join(__dirname, "public")));
 
 // Routes
 // const videosJS = require("./routes/videos.js");
 // const commentsJS = require("./routes/comments.js");
+const itineraryRouter = require("./routes/itinerary");
+const usersRouter = require("./routes/users");
 
 // Configuration
 require('dotenv').config();
@@ -24,6 +27,8 @@ app.use(morgan('tiny'));
 
 
 // Routes
+app.use("/itinerary", itineraryRouter);
+app.use("/users", usersRouter);
 // app.use("/", videosJS);
 // app.use("/", commentsJS);
 
