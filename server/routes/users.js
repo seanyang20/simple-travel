@@ -23,6 +23,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/:id", (req, res) => {
+    
   User.where({ id: req.params.id })
     .fetch({ withRelated: ["itinerary"] })
     .then((user) => {
