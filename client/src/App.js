@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import Header from "./components/Header/Header";
 import Itinerary from "./components/Itinerary/Itinerary";
 import SelectedItinerary from "./components/SelectedItinerary/SelectedItinerary";
+import User from "./components/User/User";
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route exact path="/" component={Home}/>
             <Route exact path="/itinerary" component={Itinerary} />
             <Route exact path="/itinerary/:id" component={SelectedItinerary} />
+            <Route exact path="/users/:id" component={User} />
             {/* <Route path="/upload" component={Upload} />
             <Route path="/videos/:id" 
             render={(reactRouterDomProps) =>{
