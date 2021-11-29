@@ -27,7 +27,7 @@ export default class Idea extends Component {
         </article>
         <article className="itinerary__container">
           {this.state.itinerary.map((itin) => (
-            <div className="itinerary__content">
+            <div className="itinerary__content" key={itin.id}>
               <h2 className="itinerary__title">Travel Plans</h2>
               <p className="itinerary__description">{itin.description}</p>
               <button

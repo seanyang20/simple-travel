@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./Header.scss";
-import axios from "axios";
+// import axios from "axios";
 
 export default class Header extends Component {
  
