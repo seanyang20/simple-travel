@@ -11,7 +11,7 @@ function App() {
     <div className="App">
          <Header />
           <Switch>
-            <Route path="/" exact component={Home}/>
+            <Route exact path="/" exact component={Home}/>
             <Route exact path="/itinerary" component={Itinerary} />
             {/* <Route path="/upload" component={Upload} />
             <Route path="/videos/:id" 

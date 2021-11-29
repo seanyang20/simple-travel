@@ -9,6 +9,7 @@ export default class Idea extends Component {
 
   getItinerary = () => {
     axios.get("http://localhost:8080/itinerary").then((res) => {
+      console.log(res.data);
       this.setState({
         itinerary: res.data,
       });
