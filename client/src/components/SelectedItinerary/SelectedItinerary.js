@@ -8,40 +8,39 @@ export default class SelectedItinerary extends Component {
     itinerary: [],
   };
 
-  getIdea = (id) => {
+  getItinerary = (id) => {
     axios.get(`http://localhost:8080/itinerary/${id}`).then((res) => {
-        console.log(res);
-    //   this.setState({
-    //     idea: [res.data],
-    //   });
+        console.log(res.data);
+      this.setState({
+        itinerary: [res.data],
+      });
     });
   };
 
   componentDidMount() {
-    // this.getIdea(this.props.match.params.id);
+    this.getItinerary(this.props.match.params.id);
   }
 
   render() {
     return (
       <section>
-        {/* <article>
-          <h1>Idea</h1>
+        <article>
+          <h1>Itinerary</h1>
         </article>
         <article>
-          {this.state.idea.map((idea) => (
-            <article key={idea.id}>
-              <h2>{idea.idea}</h2>
-              <p>{idea.description}</p>
+          {this.state.itinerary.map((itinerary) => (
+            <article key={itinerary.id}>
+              <h2>{itinerary.itinerary}</h2>
+              <p>{itinerary.description}</p>
               <article>
-                <h3>{idea.user.user_name}</h3>
-                <Link to={`/profile/${idea.user.id}`}>
-                  <span>{idea.user.user_name}'s Profile</span>
+                <h3>{itinerary.user.user_name}</h3>
+                <Link to={`/users/${itinerary.user.id}`}>
+                  <span>{itinerary.user.user_name}'s Profile</span>
                 </Link>
               </article>
             </article>
           ))}
-        </article> */}
-        Test
+        </article>
       </section>
     );
   }

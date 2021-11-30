@@ -3,8 +3,9 @@ exports.up = function (knex) {
       table.increments("id");
       table.string("itinerary").notNullable();
       table.string("description").notNullable();
+      table.integer("user_id").unsigned();
       table
-        .integer("user_id").unsigned().notNullable()
+        .foreign("user_id")
         .references("id")
         .inTable("users")
         .onDelete("CASCADE");

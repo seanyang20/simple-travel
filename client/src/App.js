@@ -6,6 +6,11 @@ import Header from "./components/Header/Header";
 import Itinerary from "./components/Itinerary/Itinerary";
 import SelectedItinerary from "./components/SelectedItinerary/SelectedItinerary";
 import User from "./components/User/User";
+import Login from "./pages/Login/Login";
+import Signup from "./pages/Signup/Signup";
+import AddItinerary from "./pages/AddItinerary/AddItinerary";
+import EditItinerary from "./pages/EditItinerary/EditItinerary";
+import DeleteItinerary from "./pages/DeleteItinerary/DeleteItinerary";
 
 
 function App() {
@@ -17,6 +22,11 @@ function App() {
             <Route exact path="/itinerary" component={Itinerary} />
             <Route exact path="/itinerary/:id" component={SelectedItinerary} />
             <Route exact path="/users/:id" component={User} />
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/addItinerary" component={AddItinerary} />
+            <Route exact path="/editItinerary" component={EditItinerary} />
+            <Route exact path="/deleteItinerary" component={DeleteItinerary} />
             {/* <Route path="/upload" component={Upload} />
             <Route path="/videos/:id" 
             render={(reactRouterDomProps) =>{

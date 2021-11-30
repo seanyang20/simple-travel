@@ -44,5 +44,8 @@ module.exports = {
   //     tableName: 'knex_migrations'
   //   }
   // }
-
+  production: {
+    client: "mysql",
+    connection: process.env.JAWSDB_URL,
+  },
 };

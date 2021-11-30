@@ -1,18 +1,20 @@
+const bcrypt = require("bcryptjs");
+
 const userData = [
   {
     id: 1,
     user_name: "Sean",
-    password: "capstone",
+    password:  bcrypt.hashSync("capstone", 8).toString(),
   },
   {
     id: 2,
     user_name: "Richard",
-    password: "capstone",
+    password: bcrypt.hashSync("capstone", 8).toString(),
   },
   {
     id: 3,
     user_name: "Edward",
-    password: "capstone",
+    password: bcrypt.hashSync("capstone", 8).toString(),
   },
 ];
 
