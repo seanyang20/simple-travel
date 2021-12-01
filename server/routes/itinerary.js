@@ -57,4 +57,22 @@ router.post("/", (req, res) => {
     );
 });
 
+router.put("/:id",  (req, res) => {
+  Itinerary.where({ id: req.params.id })
+    .fetch()
+    .then((itinerary) => {
+      itinerary
+        .save({
+          itinerary: req.body.itinerary,
+          description: req.body.description,
+        })
+        .then((updatedItinerary) => {
+          res.status(200).json(updatedItinerary);
+        });
+    })
+    .catch(() =>
+      res.status(400).json({ message: `Error updating idea ${req.params.id}` })
+    );
+});
+
 module.exports = router;
