@@ -14,6 +14,7 @@ export default class User extends Component {
       });
     });
   };
+  
   componentDidMount() {
     this.getProfile(this.props.match.params.id);
   }

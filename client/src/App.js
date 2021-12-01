@@ -24,9 +24,9 @@ function App() {
             <Route exact path="/users/:id" component={User} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/signup" component={Signup} />
-            <Route exact path="/addItinerary" component={AddItinerary} />
-            <Route exact path="/editItinerary" component={EditItinerary} />
-            <Route exact path="/deleteItinerary" component={DeleteItinerary} />
+            <Route exact path="/addItinerary/:id" component={AddItinerary} />
+            <Route exact path="/editItinerary/:id" component={EditItinerary} />
+            <Route exact path="/deleteItinerary/:id" component={DeleteItinerary} />
             {/* <Route path="/upload" component={Upload} />
             <Route path="/videos/:id" 
             render={(reactRouterDomProps) =>{
