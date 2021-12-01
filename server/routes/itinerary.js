@@ -75,4 +75,16 @@ router.put("/:id",  (req, res) => {
     );
 });
 
+router.delete("/:id", (req, res) => {
+  Itinerary.where({ id: req.params.id })
+    .destroy()
+    .then(() => {
+      res.status(200).json({ message: `Deleted Itinerary ${req.params.id}` });
+    })
+    .catch(() =>
+      res.status(400).json({ message: `Error deleting Itinerary ${req.params.id}` })
+    );
+});
+
+
 module.exports = router;
