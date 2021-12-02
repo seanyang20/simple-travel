@@ -21,8 +21,19 @@ export default class Login extends Component {
       .post("http://localhost:8080/login", this.state.loginFormData)
       .then((response) => {
         console.log(response.data);         
-        sessionStorage.setItem("token", response.data.token);         // using sessionStorage here instead of cookie 
+
+   
+        // storage.push(response.data.token);
+        // storage.push(response.data.user.user_name);
+     
+        // sessionStorage.setItem("storage", storage);
+        // sessionStorage.setItem("token", response.data.token);         // using sessionStorage here instead of cookie 
+        sessionStorage.setItem('user_name', response.data.user.user_name );
+        sessionStorage.setItem('id', response.data.user.id)
+        sessionStorage.setItem('token', response.data.token)
         this.props.history.push({ pathname: "/itinerary" });          // directing user to the itinerary page upon login
+        // console.log(response.data);
+      
       })
       .catch((err) => 
       {
@@ -34,54 +45,55 @@ export default class Login extends Component {
   };
 
   handleClick = () => {
-    this.props.history.push("/register");
+    this.props.history.push("/signup");
   };
 
   render() {
     return (
       <section className="login">
-       <article className="form__container">
-          <h1 className="form__heading">Login</h1>
+       <article className="login__container">
+          <h1 className="login__heading">Login</h1>
           <form
             action=""
             method="POST"
-            className="form"
+            className="login__form"
             onSubmit={this.handleSubmit}
           >
-            <div className="form__usernameContainer">
+            <div className="login__usernameContainer">
               <label>Username:</label>
               <input
                 name="user_name"
                 className={
                   this.state.errors
-                    ? "form__username form__errors"
-                    : "form__username"
+                    ? "login__username login__errors"
+                    : "login__username"
                 }
                 onChange={this.handleChange}
               />
             </div>
-            <div className="form__passwordContainer">
+            <div className="login__passwordContainer">
               <label>Password:</label>
               <input
+                type="password"
                 name="password"
                 className={
                   this.state.errors
-                    ? "form__password form__errors"
-                    : "form__password"
+                    ? "login__password login__errors"
+                    : "login__password"
                 }
                 onChange={this.handleChange}
               />
             </div>
-            <button type="submit" className="form__btn">
+            <button type="submit" className="login__btn">
               Login
             </button>
           </form>
-          <span>Don't have an account? Regsiter here:</span>
-          <button onClick={this.handleClick} className="form__btn">
+          <span>Don't have an account? Register today!</span>
+          <button onClick={this.handleClick} className="login__btn">
             Register
           </button>
         </article>
-      </section>
+        </section>
     );
   }
 }

@@ -11,10 +11,10 @@ export default class Header extends Component {
         <nav className="header__navbar">
           <ul className="header__navbarList">
           <Link to="/" className="header__navbarItem">
-              <li>Home</li>
+              <li>HOME</li>
             </Link>
             <Link to="/itinerary" className="header__navbarItem">
-              <li>Itinerary</li>
+              <li>ITINERARY</li>
             </Link>
           </ul>
         </nav>

@@ -22,6 +22,7 @@ export default class EditItinerary extends Component {
         },
       })
       .then((response) => {
+        console.log(response);
         this.setState({
           itinerary: [response.data],
         });

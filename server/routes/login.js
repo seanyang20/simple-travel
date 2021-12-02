@@ -19,20 +19,6 @@ router.post("/", async (req, res) => {
 //       res.status(403).send({token:null})
 //   }
 
-// User.where({ user_name: username })
-// .fetch()
-// .then((user) => {
-//   const isMatch = bcrypt.compareSync(password, user.password);
-//   if (!isMatch) {
-//     return res.status(400).json({ error: "Invalid credentials" });
-//   }
-//   const token = jwt.sign(
-//     { username: user.user_name },
-//     process.env.JWT_SECRET
-//   );
-//   res.status(200).json({token: token });
-// })
-// .catch((err) => res.status(400).json({ message: err.message }));
 console.log(username, password);
 
 User.where({ user_name: username })
@@ -59,8 +45,6 @@ User.where({ user_name: username })
 res.status(400).json({ message: err.message })
 
 });
-
-
 
 });
 

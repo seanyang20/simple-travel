@@ -57,6 +57,7 @@ export default class Signup extends Component {
             <div className="signup__passwordContainer">
               <label>Password:</label>
               <input
+                type="password"
                 className={
                   this.state.errors
                     ? "signup__password signup__errors"

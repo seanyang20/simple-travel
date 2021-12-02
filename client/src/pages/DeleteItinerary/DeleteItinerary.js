@@ -6,7 +6,7 @@ export default function DeleteItinerary(props) {
 
   const handleClick = () => {
     axios
-      .delete(`http://localhost:8080/itinerary/${props.match.params.id}`, {
+      .delete(`http://localhost:8080/itinerary/${props.match.params.id}`, {    // referencing the itinerary id
         headers: {
           authorization: `Bearer ${sessionStorage.getItem("token")}`,
         },

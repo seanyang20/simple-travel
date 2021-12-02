@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <header className="home">
       <article className="home__textContainer">
-        <h1 className="home__text">SimpleTravel</h1>
-        <p>Find or create your own ideal travel itinerary</p>
+        <h1 className="home__title">SimpleTravel</h1>
+        <p className="home__text">Find or create your own ideal travel itinerary</p>
         <article>
           <button className="home__btn" onClick={() => handleClick()}>
             Get Started
