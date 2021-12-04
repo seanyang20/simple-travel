@@ -6,13 +6,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box; 
+    
   }
   .selecteditinerary {
     background-color: $mercury;
     width: 100%;
     height: 100vh;
+
     &__container {
+      height: 100vh;
       flex-wrap: wrap;
+      background-color: $mercury;
       @include flex(row, flex-start, center);
         margin-top: 2rem;
         padding: 1rem;

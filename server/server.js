@@ -29,7 +29,7 @@ app.use(morgan('tiny'));
 
 
 // Routes
-app.use("/itinerary", itineraryRouter);
+app.use("/", itineraryRouter);
 app.use("/users", usersRouter);
 app.use("/login", loginRouter);
 app.use("/signup", signupRouter);

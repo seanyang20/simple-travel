@@ -7,3 +7,118 @@
     padding: 0;
     box-sizing: border-box; 
   }
+  .add {
+    height: 100vh;
+    background-color: $mercury;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    @include flex(row, center, center);
+
+    @include desktop() {
+      padding-left: 20rem;
+      padding-right: 20rem;
+    }
+    @include tablet() {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  
+  
+    &__heading {
+      font-size: 2rem;
+    }
+  
+    &__container {
+     
+      text-align: center;
+      padding: 2rem 1rem 2rem 1rem;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+      border-radius: 5px;
+      background-color: beige;
+      width: 50vw;
+      @include tablet() {
+        padding-left: 3rem;
+        padding-right: 3rem;
+      }
+  
+  
+      &:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
+        transition: 1s;
+      }
+    }
+    &__username {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+      margin: 0.9vw 0;
+      border: 0;
+      border-radius: 5px;
+      font-size: 20px;
+      border: 1px solid;
+      margin-bottom: 2rem;
+      // &Contanier {
+      // }
+    }
+  
+    &__password {
+      display: block;
+      width: 100%;
+      padding: 0.5rem 0.8rem 0.5rem 0.8rem;
+      margin: 0.9vw 0;
+      border: 0;
+      border-radius: 5px;
+      font-size: 20px;
+      border: 1px solid;
+      margin-bottom: 2rem;
+      height: 14rem;
+  
+      // &Contanier {
+      // }
+    }
+  
+    &__btn {
+      padding: 0.7rem 1rem;
+      border-radius: 1rem;
+      background-color: $blue;
+      color: $white;
+      font-size: 1rem;
+      margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+  
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $blue;
+        border-radius: 10rem;
+        z-index: -2;
+      }
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($blue, 15%);
+        transition: all .3s;
+        border-radius: 10rem;
+        z-index: -1;  
+      }
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        &:before {
+          width: 100%;
+        }
+    }
+    }
+  }

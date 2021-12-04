@@ -69,7 +69,7 @@ export default class EditItinerary extends Component {
   
   render () {
   return (
-    <section className="add">
+    <section className="edit">
       <article className="edit__container">
           <h2 className="edit__heading">Edit Your Itinerary!</h2>
           <form
@@ -87,7 +87,7 @@ export default class EditItinerary extends Component {
                   </label>
                 </div>
                 <div className="">
-                  <label>Description:</label> <br />
+                  <label className="edit__description-label">Description:</label> <br />
                   <textarea
                     type="text"
                     name="description"

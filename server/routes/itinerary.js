@@ -6,7 +6,7 @@ const knex = require("knex")(require("../knexfile").development);
 const Itinerary = require("../models/itinerary");
 const authorize = require("../middleware/authorize");
 
-router.get("/", authorize, function (req, res, next) {         // rmb to put authorize here
+router.get("/itinerary", authorize, function (req, res, next) {         // rmb to put authorize here
   console.log("inside GET router for itinerary");
   Itinerary.fetchAll({ debug: true })
     .then((itinerary) => {
@@ -16,7 +16,7 @@ router.get("/", authorize, function (req, res, next) {         // rmb to put aut
     .catch(() => res.status(400).json({ message: "Error getting itinerary" }));
 });
 
-router.get("/:id", authorize, (req, res) => {
+router.get("/itinerary/:id", authorize, (req, res) => {
   console.log("Inside GET route for a specific itinerary");
   console.log(req.params.id);
 
@@ -33,17 +33,18 @@ router.get("/:id", authorize, (req, res) => {
     );
 });
 
-router.post("/", authorize, (req, res) => {
+router.post("/users/:id",  (req, res) => {
   console.log("Inside back end POST for new itinerary");
-
+  // console.log(req.params.id);
   new Itinerary({
     itinerary: req.body.itinerary,
     description: req.body.description,
-    user_id: req.body.user_id,
+    // user_id: req.body.user_id,
+    user_id: req.params.id,
   })
     .save()
     .then((itinerary) => {
-      // console.log(itinerary);
+      console.log(itinerary, "test");
       res.status(201).json(itinerary);
     })
     .catch((err) => 
@@ -57,7 +58,7 @@ router.post("/", authorize, (req, res) => {
     );
 });
 
-router.put("/:id", authorize,  (req, res) => {
+router.put("/itinerary/:id", authorize,  (req, res) => {
   Itinerary.where({ id: req.params.id })
     .fetch()
     .then((itinerary) => {
@@ -75,7 +76,7 @@ router.put("/:id", authorize,  (req, res) => {
     );
 });
 
-router.delete("/:id", authorize, (req, res) => {
+router.delete("/itinerary/:id", authorize, (req, res) => {
   Itinerary.where({ id: req.params.id })
     .destroy()
     .then(() => {

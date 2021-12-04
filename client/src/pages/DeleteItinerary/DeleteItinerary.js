@@ -21,7 +21,6 @@ export default function DeleteItinerary(props) {
 
   return (
     <section className="delete">
-      <h2>Delete Itinerary</h2>
       <div className="delete__btnContainer">
         <h2 className="delete__title">
           Are You Sure You Want To Delete This Idea?

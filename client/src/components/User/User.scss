@@ -9,9 +9,12 @@
   }
   .user {
     width: 100%;
+    background-color: $mercury;
+    height: 100vh;
+
     &__username {
       margin-top: 4.5rem;
-      color: blue;
+      color: $black;
       font-size: 2rem;
       &:hover {
         font-size: 1.8rem;
@@ -20,7 +23,7 @@
   
     &__title {
       margin-bottom: 3rem;
-      color: blue;
+      color: $black;
       font-style: oblique;
       font-size: 2rem;
       &:hover {
@@ -70,40 +73,97 @@
     }
   
     &__btn {
-      border: 0px;
       padding: 0.7rem 1rem;
       border-radius: 1rem;
-      background-color: black;
-      color: blue;
+      background-color: $blue;
+      color: $white;
       font-size: 1rem;
-      margin: 0.6rem;
+      margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
   
-      &:hover {
-        background-color: blue;
-        color: black;
-        transition: 0.8s;
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $blue;
+        border-radius: 10rem;
+        z-index: -2;
       }
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($blue, 15%);
+        transition: all .3s;
+        border-radius: 10rem;
+        z-index: -1;  
+      }
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        &:before {
+          width: 100%;
+        }
+    }
     }
   
     &__btn--add {
-      border: 0px;
       padding: 0.7rem 1rem;
       border-radius: 1rem;
-      background-color: black;
-      color: blue;
+      background-color: $blue;
+      color: $white;
       font-size: 1rem;
-      margin: 0.6rem;
-      margin-bottom: 3rem;
-      &:hover {
-        background-color: blue;
-        color: black;
-        transition: 0.8s;
+      margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+      transition: all .3s;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+  
+      &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: $blue;
+        border-radius: 10rem;
+        z-index: -2;
       }
+      &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: darken($blue, 15%);
+        transition: all .3s;
+        border-radius: 10rem;
+        z-index: -1;  
+      }
+      &:hover {
+        cursor: pointer;
+        color: #fff;
+        &:before {
+          width: 100%;
+        }
+    }
     }
   
     &__btnContainer {
       display: flex;
       justify-content: center;
+      margin: 0 0 3rem 0;
     }
 
   }
