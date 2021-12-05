@@ -82,8 +82,14 @@ export default class Header extends Component {
    console.log(this.state);
     return (
       <header className="header">
-        <nav className="header__navbar">
-          <ul className="header__navbarList">
+         <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu"/>
+        <label for="openSidebarMenu" class="sidebarIconToggle">
+          <div className="spinner diagonal part-1"></div>
+          <div className="spinner horizontal"></div>
+          <div className="spinner diagonal part-2"></div>
+        </label>
+        <nav className="header__navbar"id="sidebarMenu" >
+          <ul className="header__navbarList" >
             <Link to="/" className="header__navbarItem">
               <li>HOME</li>
             </Link>
