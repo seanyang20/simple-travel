@@ -15,7 +15,7 @@ router.get("/", authorize, function (req, res, next) {
 
 });
 
-router.get("/:id",  (req, res) => {
+router.get("/:id",  (req, res) => {           // putting authorize here crashes the system a bit
   console.log("testtesttest");
   console.log(req.params.id);
   console.log(req);

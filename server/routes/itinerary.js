@@ -33,7 +33,7 @@ router.get("/itinerary/:id", authorize, (req, res) => {
     );
 });
 
-router.post("/users/:id",  (req, res) => {
+router.post("/users/:id", authorize,  (req, res) => {
   console.log("Inside back end POST for new itinerary");
   // console.log(req.params.id);
   new Itinerary({

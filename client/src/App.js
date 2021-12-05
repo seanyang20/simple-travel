@@ -16,7 +16,7 @@ import DeleteItinerary from "./pages/DeleteItinerary/DeleteItinerary";
 function App() {
   return (
     <div className="App">
-         <Header />
+         <Route component={Header} />
           <Switch>
             <Route exact path="/" component={Home}/>
             <Route exact path="/itinerary" component={Itinerary} />
