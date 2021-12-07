@@ -1,24 +1,36 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./Login.scss";
 
 
-export default class Login extends Component {
-  state = {
-    loginFormData: null,
+export default function Login (props) {
+  const [loginFormData, setLoginFormData] = useState({
+    user_name: null,
+    password: null,
     errors: false,
+  });
+  // state = {
+  //   loginFormData: null,
+  //   errors: false,
+  // };
+
+  const handleChange = (event) => {
+    console.log(event.target.name);
+    console.log(event.target.value);
+
+    setLoginFormData({...loginFormData,
+      [event.target.name]: event.target.value});
+    // this.setState({
+    //   loginFormData: { ...this.state.loginFormData, [event.target.name]: event.target.value },
+    // });
+
+    console.log(loginFormData);
   };
 
-  handleChange = (event) => {
-    this.setState({
-      loginFormData: { ...this.state.loginFormData, [event.target.name]: event.target.value },
-    });
-  };
-
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/login", this.state.loginFormData)
+      .post("http://localhost:8080/login", loginFormData)
       .then((response) => {
         console.log(response.data);         
 
@@ -31,24 +43,25 @@ export default class Login extends Component {
         sessionStorage.setItem('user_name', response.data.user.user_name );
         sessionStorage.setItem('id', response.data.user.id)
         sessionStorage.setItem('token', response.data.token)
-        this.props.history.push({ pathname: "/itinerary" });          // directing user to the itinerary page upon login
+        props.history.push({ pathname: "/itinerary" });          // directing user to the itinerary page upon login
         // console.log(response.data);
       
       })
       .catch((err) => 
       {
-        this.setState({
-          errors: true,
-        });
+        setLoginFormData({errors: true});
+        // this.setState({
+        //   errors: true,
+        // });
         console.log(err);
       });
   };
 
-  handleClick = () => {
-    this.props.history.push("/signup");
+  const handleClick = () => {
+    props.history.push("/signup");
   };
 
-  render() {
+  // render() {
     return (
       <section className="login">
        <article className="login__container">
@@ -57,18 +70,18 @@ export default class Login extends Component {
             action=""
             method="POST"
             className="login__form"
-            onSubmit={this.handleSubmit}
+            onSubmit={handleSubmit}
           >
             <div className="login__usernameContainer">
               <label>Username:</label>
               <input
                 name="user_name"
                 className={
-                  this.state.errors
+                  loginFormData.errors
                     ? "login__username login__errors"
                     : "login__username"
                 }
-                onChange={this.handleChange}
+                onChange={handleChange}
               />
             </div>
             <div className="login__passwordContainer">
@@ -77,11 +90,11 @@ export default class Login extends Component {
                 type="password"
                 name="password"
                 className={
-                  this.state.errors
+                  loginFormData.errors
                     ? "login__password login__errors"
                     : "login__password"
                 }
-                onChange={this.handleChange}
+                onChange={handleChange}
               />
             </div>
             <button type="submit" className="login__btn">
@@ -89,11 +102,11 @@ export default class Login extends Component {
             </button>
           </form>
           <span>Don't have an account? Register today!</span>
-          <button onClick={this.handleClick} className="login__btn">
+          <button onClick={handleClick} className="login__btn">
             Register
           </button>
         </article>
         </section>
     );
   }
-}
+// }
