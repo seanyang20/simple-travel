@@ -1,37 +1,52 @@
 import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import "./Signup.scss";
 
-export default class Signup extends Component {
-  state = {
-    signupFormData: null,
+export default function Signup (props) {
+  const [signUpFormData, setSignUpFormData] = useState({
+    user_name: null,
+    password: null,
     errors: false,
+  });
+  // state = {
+  //   signupFormData: null,
+  //   errors: false,
+  // };
+  const handleChange = (event) => {
+    console.log(event.target.name);
+    console.log(event.target.value);
+
+    setSignUpFormData({...signUpFormData,
+      [event.target.name]: event.target.value});
+    // this.setState({
+    //   signupFormData: { ...this.state.signupFormData, [event.target.name]: event.target.value },
+    // });
+
+    console.log(signUpFormData);
   };
-  handleChange = (event) => {
-    this.setState({
-      signupFormData: { ...this.state.signupFormData, [event.target.name]: event.target.value },
-    });
-  };
-  handleSubmit = (event) => {
+
+  const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/signup", this.state.signupFormData)
+      .post("http://localhost:8080/signup", signUpFormData)
       .then((response) => {
         console.log(response);
         sessionStorage.setItem("token", response.data.token);
-        this.props.history.push("/login");
+        props.history.push("/login");
       })
       .catch((err) => 
-      this.setState({
-        errors: true,
-      }));
+
+      setSignUpFormData({errors: true}));
+      // this.setState({
+      //   errors: true,
+      // }));
   };
 
-  handleClick = () => {
-    this.props.history.push("/login");
+  const handleClick = () => {
+    props.history.push("/login");
   };
 
-  render() {
+  // render() {
     return (
       <section className="signup">
         <article className="signup__container">
@@ -40,18 +55,18 @@ export default class Signup extends Component {
             action=""
             method="POST"
             className="signup__form"
-            onSubmit={this.handleSubmit}
+            onSubmit={handleSubmit}
           >
             <div className="signup__usernameContainer">
               <label>Username:</label>
               <input
                 className={
-                  this.state.errors
+                  signUpFormData.errors
                     ? "signup__username signup__errors"
                     : "signup__username"
                 }
                 name="user_name"
-                onChange={this.handleChange}
+                onChange={handleChange}
               />
             </div>
             <div className="signup__passwordContainer">
@@ -59,12 +74,12 @@ export default class Signup extends Component {
               <input
                 type="password"
                 className={
-                  this.state.errors
+                  signUpFormData.errors
                     ? "signup__password signup__errors"
                     : "signup__password"
                 }
                 name="password"
-                onChange={this.handleChange}
+                onChange={handleChange}
               />
             </div>
             <button type="submit" className="signup__btn">
@@ -72,11 +87,11 @@ export default class Signup extends Component {
             </button>
           </form>
           <span>Have an account already? Login here:</span>
-          <button className="signup__btn" onClick={this.handleClick}>
+          <button className="signup__btn" onClick={handleClick}>
             Login
           </button>
         </article>
       </section>
     );
   }
-}
+// }
