@@ -2,7 +2,7 @@ exports.up = function (knex) {
     return knex.schema.createTable("itineraries", function (table) {
       table.increments("id");
       table.string("itinerary").notNullable();
-      table.string("description").notNullable();
+      table.string("description", 10000).notNullable();
       table.integer("user_id").unsigned();
       table
         .foreign("user_id")

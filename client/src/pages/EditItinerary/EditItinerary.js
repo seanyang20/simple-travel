@@ -1,20 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import "./EditItinerary.scss";
 
 
-export default class EditItinerary extends Component {
-  state = {
-    itineraryFormData: null,
-    itinerary: [],
-  };
-  handleChange = (event) => {
-    this.setState({
-      itineraryFormData: { ...this.state.itineraryFormData, [event.target.name]: event.target.value },
-    });
+export default function EditItinerary (props) {
+  const [formData, setFormData] = useState(null);
+  const [itinerary, setItinerary] = useState([]);
+  // state = {
+  //   itineraryFormData: null,
+  //   itinerary: [],
+  // };
+  const handleChange = (event) => {
+
+    setFormData({[event.target.name]: event.target.value});
+    // this.setState({
+    //   itineraryFormData: { ...this.state.itineraryFormData, [event.target.name]: event.target.value },
+    // });
   };
 
-  getItinerary = (id) => {
+  const getItinerary = (id) => {
     axios
       .get(`http://localhost:8080/itinerary/${id}`, {
         headers: {
@@ -23,9 +27,10 @@ export default class EditItinerary extends Component {
       })
       .then((response) => {
         console.log(response);
-        this.setState({
-          itinerary: [response.data],
-        });
+        setItinerary([response.data]);
+        // this.setState({
+        //   itinerary: [response.data],
+        // });
       })
       .catch((err) => {
         if (err.response === undefined) {
@@ -33,7 +38,7 @@ export default class EditItinerary extends Component {
         } else {
           switch (err.response.status) {
             case 403:
-              this.props.history.push("/login");
+              props.history.push("/login");
               break;
             default:
               break;
@@ -42,12 +47,12 @@ export default class EditItinerary extends Component {
       });
   };
 
-  handleSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     axios
       .put(
-        `http://localhost:8080/itinerary/${this.props.match.params.id}`,
-        this.state.itineraryFormData,
+        `http://localhost:8080/itinerary/${props.match.params.id}`,
+        formData,
         {
           headers: {
             authorization: `Bearer ${sessionStorage.getItem("token")}`,
@@ -55,19 +60,24 @@ export default class EditItinerary extends Component {
         }
       )
       .then(() => {
-        this.props.history.goBack();
+        props.history.goBack();
       });
   };
 
-  handleClick = () => {
-    this.props.history.goBack();
+  const handleClick = () => {
+    props.history.goBack();
   };
 
-    componentDidMount() {
-    this.getItinerary(this.props.match.params.id);
-  }
+  useEffect(() => {
+    getItinerary(props.match.params.id);
   
-  render () {
+  }, []
+  )
+  //   componentDidMount() {
+  //   this.getItinerary(this.props.match.params.id);
+  // }
+  
+  // render () {
   return (
     <section className="edit">
       <article className="edit__container">
@@ -76,9 +86,9 @@ export default class EditItinerary extends Component {
             action=""
             method="POST"
             className="edit__form"
-            onSubmit={this.handleSubmit}
+            onSubmit={handleSubmit}
           >
-            {this.state.itinerary.map((itinerary) => (
+            {itinerary.map((itinerary) => (
               <article key={itinerary.id}>
                 <div className="edit__content">
                   <label className="edit__username">
@@ -91,7 +101,7 @@ export default class EditItinerary extends Component {
                   <textarea
                     type="text"
                     name="description"
-                    onChange={this.handleChange}
+                    onChange={handleChange}
                     placeholder={itinerary.description}
                     className="edit__description"
                   />
@@ -102,11 +112,11 @@ export default class EditItinerary extends Component {
               Submit
             </button>
           </form>
-          <button className="edit__btn" onClick={this.handleClick}>
+          <button className="edit__btn" onClick={handleClick}>
             Back
           </button>
         </article>
     </section>
   );
 }
-}
+// }

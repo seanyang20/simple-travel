@@ -15,7 +15,7 @@
   &__container {
     flex-wrap: wrap;
     @include flex (row, flex-start, center);
-    height: 100vh;
+    height: 100%;
   }
 
   &__heading {

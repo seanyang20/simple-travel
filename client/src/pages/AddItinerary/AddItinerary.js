@@ -1,31 +1,43 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import axios from "axios";
 import "./AddItinerary.scss";
 
 
-export default class AddItinerary extends Component {
-  state = {
-    itineraryFormData: null,
-  };
-  handleChange = (event) => {
+export default function AddItinerary (props) {
+  const [formData, setFormData] = useState({
+    itinerary: null,
+    description: null,
+  });
+  // state = {
+  //   itineraryFormData: null,
+  // };
+  const handleChange = (event) => {
     console.log(event.target.name); // working 
     console.log(event.target.value); // working
+
+    // setFormData({[event.target.name]: event.target.value})
+    setFormData({...formData,
+    [event.target.name]: event.target.value});
+   
     
-    this.setState({
-      itineraryFormData: { ...this.state.itineraryFormData, [event.target.name]: event.target.value },
-    });
+    console.log(formData);
+    // this.setState({
+    //   itineraryFormData: { ...this.state.itineraryFormData, [event.target.name]: event.target.value },
+    // });
 
-    console.log(this.state.itineraryFormData);
+    // console.log(this.state.itineraryFormData);
   };
+  console.log(formData);
 
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
+    // console.log(props.match.params.id);
     // console.log(this.props.match.params.id);
-    console.log(this.state.itineraryFormData);   // currently returning null
+    // console.log(this.state.itineraryFormData);   // currently returning null
     axios
       .post(
-        `http://localhost:8080/users/${this.props.match.params.id}`,
-        this.state.itineraryFormData,
+        `http://localhost:8080/users/${props.match.params.id}`,
+        formData,
         {
           headers: {
             authorization: `Bearer ${sessionStorage.getItem("token")}`,
@@ -34,15 +46,16 @@ export default class AddItinerary extends Component {
       )
       .then((response) => {
         console.log(response);
-        this.props.history.push(`/users/${response.data.user_id}`);
+        props.history.push(`/users/${response.data.user_id}`);
       })
       .catch((err) => console.log(err));
   };
 
-  handleClick = () => {
-    this.props.history.push(`/users/${this.props.match.params.id}`);
+  const handleClick = () => {
+    props.history.push(`/users/${props.match.params.id}`);
   };
-  render(){
+  // render(){
+    // console.log(sessionStorage);
   return (
     <section className="add">
        <article className="add__container">
@@ -51,14 +64,14 @@ export default class AddItinerary extends Component {
             action=""
             method="POST"
             className="add__form"
-            onSubmit={this.handleSubmit}
+            onSubmit={handleSubmit}
           >
             <div className="add__usernameContainer">
               <label>Itinerary:</label>
               <input
                 name="itinerary"
                 className="add__username"
-                onChange={this.handleChange}
+                onChange={handleChange}
               />
             </div>
             <div className="form__passwordContainer">
@@ -66,18 +79,18 @@ export default class AddItinerary extends Component {
               <textarea
                 name="description"
                 className="add__password"
-                onChange={this.handleChange}
+                onChange={handleChange}
               />
             </div>
             <button type="submit" className="add__btn">
               Submit
             </button>
           </form>
-          <button onClick={this.handleClick} className="add__btn">
+          <button onClick={handleClick} className="add__btn">
             Back
           </button>
         </article>
     </section>
   );
 }
-}
+// }
