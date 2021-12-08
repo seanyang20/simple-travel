@@ -82,6 +82,19 @@ export default function Signup (props) {
                 onChange={handleChange}
               />
             </div>
+            {/* <div className="signup__passwordContainer">
+              <label>Confirm Password:</label>
+              <input
+                type="password"
+                className={
+                  signUpFormData.errors
+                    ? "signup__password signup__errors"
+                    : "signup__password"
+                }
+                name="password"
+                onChange={handleChange}
+              />
+            </div> */}
             <button type="submit" className="signup__btn">
               Submit
             </button>

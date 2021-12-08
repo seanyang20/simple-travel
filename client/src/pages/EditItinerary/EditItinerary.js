@@ -111,10 +111,13 @@ export default function EditItinerary (props) {
             <button className="edit__btn" type="submit">
               Submit
             </button>
-          </form>
-          <button className="edit__btn" onClick={handleClick}>
+            <button className="edit__btn" onClick={handleClick}>
             Back
           </button>
+          </form>
+          {/* <button className="edit__btn" onClick={handleClick}>
+            Back
+          </button> */}
         </article>
     </section>
   );
