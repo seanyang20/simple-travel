@@ -11,6 +11,7 @@
     width: 100%;
     background-color: $mercury;
     height: 100vh;
+    // height: 100vh;
 
     &__username {
       margin-top: 4.5rem;
@@ -43,6 +44,9 @@
       margin: 0 auto;
       align-items: center;
       text-align: center;
+      height: 100%;
+      background-color: $mercury;
+      // height: 100vh;
     }
   
     &__content {
@@ -53,6 +57,7 @@
       border-radius: 5px;
       margin-bottom: 2rem;
       background-color: beige;
+
       @include tablet() {
         //   margin: 20rem;
         //   margin-bottom: 0rem;
@@ -66,10 +71,20 @@
     }
   
     &__description {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 8;
+      -webkit-box-orient: vertical;
       word-break: break-all;
       width: 463px;
       word-spacing: 4px;
       line-height: 25px;
+      white-space: pre-line;
+      text-align: left;
+    }
+
+    &__deleteIcon {
+      z-index: 3;
     }
   
     &__btn {
@@ -117,43 +132,91 @@
     }
   
     &__btn--add {
-      padding: 0.7rem 1rem;
+      // padding: 0.7rem 1rem;
       border-radius: 1rem;
-      background-color: $blue;
-      color: $white;
-      font-size: 1rem;
-      margin: 0.6rem 0.6rem 0.6rem 0.6rem;
-      transition: all .3s;
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
+      width: 5px;
+      height: 5px;
+      // background-color: $blue;
+      // color: $white;
+      // font-size: 1rem;
+      // margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+      // transition: all .3s;
+      // position: relative;
+      // overflow: hidden;
+      // z-index: 1;
   
-      &:after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: $blue;
-        border-radius: 10rem;
-        z-index: -2;
-      }
-      &:before {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 0%;
-        height: 100%;
-        background-color: darken($blue, 15%);
-        transition: all .3s;
-        border-radius: 10rem;
-        z-index: -1;  
-      }
+      // &:after {
+      //   content: '';
+      //   position: absolute;
+      //   bottom: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      //   background-color: $blue;
+      //   border-radius: 10rem;
+      //   z-index: -2;
+      // }
+      // &:before {
+      //   content: '';
+      //   position: absolute;
+      //   bottom: 0;
+      //   left: 0;
+      //   width: 0%;
+      //   height: 100%;
+      //   background-color: darken($blue, 15%);
+      //   transition: all .3s;
+      //   border-radius: 10rem;
+      //   z-index: -1;  
+      // }
       &:hover {
         cursor: pointer;
-        color: #fff;
+        // color: rgb(209, 189, 189);
+        &:before {
+          width: 100%;
+        }
+    }
+    }
+
+    &__btn--icon {
+      // padding: 0.7rem 1rem;
+      border-radius: 1rem;
+      width: 5px;
+      height: 5px;
+      // background-color: $blue;
+      // color: $white;
+      // font-size: 1rem;
+      // margin: 0.6rem 0.6rem 0.6rem 0.6rem;
+      // transition: all .3s;
+      // position: relative;
+      // overflow: hidden;
+      // z-index: 1;
+  
+      // &:after {
+      //   content: '';
+      //   position: absolute;
+      //   bottom: 0;
+      //   left: 0;
+      //   width: 100%;
+      //   height: 100%;
+      //   background-color: $blue;
+      //   border-radius: 10rem;
+      //   z-index: -2;
+      // }
+      // &:before {
+      //   content: '';
+      //   position: absolute;
+      //   bottom: 0;
+      //   left: 0;
+      //   width: 0%;
+      //   height: 100%;
+      //   background-color: darken($blue, 15%);
+      //   transition: all .3s;
+      //   border-radius: 10rem;
+      //   z-index: -1;  
+      // }
+      &:hover {
+        cursor: pointer;
+        // color: #fff;
         &:before {
           width: 100%;
         }
@@ -164,6 +227,7 @@
       display: flex;
       justify-content: center;
       margin: 0 0 3rem 0;
+      
     }
 
   }

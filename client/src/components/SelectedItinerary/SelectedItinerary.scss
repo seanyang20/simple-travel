@@ -5,8 +5,8 @@
 * {
     margin: 0;
     padding: 0;
-    box-sizing: border-box; 
-    
+    box-sizing: border-box;
+
   }
   .selecteditinerary {
     background-color: $mercury;
@@ -14,22 +14,22 @@
     height: 100vh;
 
     &__container {
-      height: 100vh;
+      // height: 100vh;
       flex-wrap: wrap;
       background-color: $mercury;
-      @include flex(row, flex-start, center);
+      // @include flex(row, flex-start, center);
         margin-top: 2rem;
         padding: 1rem;
- 
+
     }
-  
+
     &__heading {
       font-size: 2.5rem;
       color: $darkblack;
       @include flex(row, center, center);
       padding: 2rem 0;
     }
-  
+
     &__content {
       text-align: center;
       padding: 2rem 2rem 2rem 2rem;
@@ -38,19 +38,19 @@
       border-radius: 5px;
       margin: 1rem auto;
       background-color: beige;
-      width: 19rem;
-      height: 19rem;
+      // width: 19rem;
+      // height: 19rem;
 
       &:hover {
         box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.8);
         transition: 1s;
       }
     }
-  
+
     &__title {
       padding: 0.5rem;
     }
-  
+
     &__description {
       padding: 0.9rem 0.5rem;
       // white-space: nowrap;
@@ -60,8 +60,10 @@
       width: 100%;
       word-spacing: 4px;
       line-height: 25px;
+      white-space: pre-line;
+      text-align: left;
     }
-  
+
     &__btn {
       padding: 0.7rem 1rem;
       border-radius: 1rem;
@@ -73,7 +75,7 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
-  
+
       &:after {
         content: '';
         position: absolute;
@@ -95,7 +97,7 @@
         background-color: darken($blue, 15%);
         transition: all .3s;
         border-radius: 10rem;
-        z-index: -1;  
+        z-index: -1;
       }
       &:hover {
         cursor: pointer;
@@ -106,4 +108,3 @@
     }
   }
   }
-  

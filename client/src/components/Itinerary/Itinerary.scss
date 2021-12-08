@@ -36,7 +36,7 @@
     margin: 1rem auto;
     background-color: beige;
     width: 19rem;
-    height: 19rem;
+    height: 35rem;
 
 
     &:hover {
@@ -50,13 +50,21 @@
   }
 
   &__description {
-    padding: 0.9rem 0.5rem;
+    // display: block;
+    padding: 0.4rem 0.5rem;
+    // overflow: hidden;
+    // text-overflow: ellipsis;
+    // white-space: nowrap;
+    // word-break: break-all;
     overflow: hidden;
-    text-overflow: ellipsis;
-    word-break: break-all;
+    display: -webkit-box;
+    -webkit-line-clamp: 13;
+    -webkit-box-orient: vertical;
     width: 100%;
     word-spacing: 4px;
     line-height: 25px;
+    white-space: pre-line;
+    text-align: left;
   }
 
   &__btn {
@@ -66,8 +74,6 @@
     color: $white;
     font-size: 1rem;
     margin: auto 0.6rem 0.6rem 0.6rem;
-    
-
     transition: all .3s;
     position: relative;
     overflow: hidden;

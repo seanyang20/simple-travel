@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 import "./User.scss";
 
 export default class User extends Component {
@@ -8,8 +11,6 @@ export default class User extends Component {
     token: [],
     noItinerary: false,
   };
-
-
 
   getUser = (id) => {
     axios
@@ -74,7 +75,7 @@ export default class User extends Component {
     console.log(sessionStorage);
     return (
       <section className="user">
-      <article>
+     
         {this.state.user.map((user) => (
           <article key={user.id}>
             <article className="user__headingContainer">
@@ -89,12 +90,16 @@ export default class User extends Component {
 
             {user.id == sessionStorage.id ? (
               <div className="user__btnContainer">
-                <button
+                <AddIcon 
+                className="user__btn--add"
+                onClick={this.handleClickAdd}
+                />
+                {/* <button
                   onClick={this.handleClickAdd}
                   className="user__btn--add"
                 >
                   Add An Itinerary
-                </button>
+                </button> */}
               </div>
             ) : (
               <></>
@@ -121,29 +126,46 @@ export default class User extends Component {
                                 className="user__btn"
                                 onClick={() => this.handleClick(`${itinerary.id}`)}
                               >
-                                Check Out My Itinerary
+                                More Info
                               </button>
                               <span>
                                 {this.state.user.map((user) =>
                                   user.id == sessionStorage.id ? (
                                     <div key={itinerary.id}>
-                                      
-                                      <button
+                                      <EditIcon
+                                      className="user__btn--icon"
+                                      onClick={() =>
+                                        this.handleClickEdit(`${itinerary.id}`)
+                                      } />
+                                      {/* <button
                                         className="user__btn"
                                         onClick={() =>
                                           this.handleClickEdit(`${itinerary.id}`)
                                         }
                                       >
                                         Edit My Itinerary
-                                      </button>
-                                      <button
+                                      </button> */}
+                                      <DeleteIcon
+                                      className="user__btn--icon"
+                                      onClick={() =>
+                                        this.handleClickDelete(`${itinerary.id}`)
+                                      } />
+                                      {/* <svg
+                                      // className="user__btn"
+                                      className="user__deleteIcon"
+                                      onClick={() =>
+                                        this.handleClickDelete(`${itinerary.id}`)
+                                      }>
+                                      </svg> */}
+                                      {/* <button
                                         className="user__btn"
+                                        // src={DeleteIcon}
                                         onClick={() =>
                                           this.handleClickDelete(`${itinerary.id}`)
                                         }
                                       >
                                         Delete My Itinerary
-                                      </button>
+                                      </button> */}
                                     </div>
                                   ) : (
                                     <span key={itinerary.id}></span>
@@ -160,7 +182,7 @@ export default class User extends Component {
               </article>
               </article>
         ))}
-      </article>
+     
     </section>
   );
 }

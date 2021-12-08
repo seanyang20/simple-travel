@@ -30,7 +30,7 @@ export default function DeleteItinerary(props) {
             Yes
           </button>
           <button className="delete__btn" onClick={handleGoBack}>
-            NO TAKE ME BACK!
+            Take Me Back
           </button>
         </div>
       </div>

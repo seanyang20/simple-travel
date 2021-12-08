@@ -102,9 +102,9 @@ export default function EditItinerary (props) {
                     type="text"
                     name="description"
                     onChange={handleChange}
-                    placeholder={itinerary.description}
+                    // placeholder={itinerary.description}
                     className="edit__description"
-                  />
+                  >{itinerary.description}</textarea>
                 </div>
               </article>
             ))}

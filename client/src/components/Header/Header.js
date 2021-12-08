@@ -83,7 +83,7 @@ export default class Header extends Component {
     return (
       <header className="header">
          <input type="checkbox" className="openSidebarMenu" id="openSidebarMenu"/>
-        <label for="openSidebarMenu" class="sidebarIconToggle">
+        <label htmlFor="openSidebarMenu" className="sidebarIconToggle">
           <div className="spinner diagonal part-1"></div>
           <div className="spinner horizontal"></div>
           <div className="spinner diagonal part-2"></div>
