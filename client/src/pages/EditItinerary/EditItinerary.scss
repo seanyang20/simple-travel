@@ -11,7 +11,8 @@
     background-color: $mercury;
     padding-left: 1rem;
     padding-right: 1rem;
-    height: 100vh;
+    // height: 100vh;
+    height: 100%;
     @include flex (row, center, center);
     @include desktop () {
       padding-left: 20rem;
@@ -50,7 +51,7 @@
     }
     &__username {
       display: block;
-      margin: 0.5rem 0 1rem 0;
+      margin: 4.5rem 0 1rem 0;
       border: 0;
       border-radius: 5px;
       font-size: 1.65rem;
@@ -64,7 +65,8 @@
       // width: 90%;
       width: 100%;
       // height: 7.0625rem;
-      height: 19rem;
+      // height: 19rem;
+      height: 100%;
       margin: 1rem 0 0 0;
       white-space: pre-line;
 
@@ -127,8 +129,24 @@
     }
     }
 
-    // &__form {
-    //   height: 100%;
-    // }
+    &__form {
+      height: 100%;
+    }
   }
-  
+  .uploadedImage {
+    width: 404px;
+    height: 235px;
+    margin-left: 24rem;
+  }
+  .sc-bdvvtL {
+    width: 2px;
+    height: 235px;
+    margin-left: 24rem;
+  }
+  // .grnfGc {
+  //   width: 404px;
+  //   height: 235px;
+  // }
+  .imageContainer {
+    @include flex(row, space-evenly, center);
+  }

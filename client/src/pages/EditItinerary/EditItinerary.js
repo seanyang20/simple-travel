@@ -1,15 +1,24 @@
 import React, { Component, useState, useEffect } from "react";
 import axios from "axios";
 import "./EditItinerary.scss";
+import ImageUpload from 'image-upload-react'
+//important for getting nice style.
+import 'image-upload-react/dist/index.css'
 
 
 export default function EditItinerary (props) {
   const [formData, setFormData] = useState(null);
   const [itinerary, setItinerary] = useState([]);
+
+    const [imageSrc, setImageSrc] = useState()
   // state = {
   //   itineraryFormData: null,
   //   itinerary: [],
   // };
+
+  const handleImageSelect = (e) => {
+    setImageSrc(URL.createObjectURL(e.target.files[0]))
+  }
   const handleChange = (event) => {
 
     setFormData({[event.target.name]: event.target.value});
@@ -76,7 +85,7 @@ export default function EditItinerary (props) {
   //   componentDidMount() {
   //   this.getItinerary(this.props.match.params.id);
   // }
-  
+  console.log(imageSrc);
   // render () {
   return (
     <section className="edit">
@@ -88,6 +97,20 @@ export default function EditItinerary (props) {
             className="edit__form"
             onSubmit={handleSubmit}
           >
+            {/* <div className="imageContainer">
+             <ImageUpload
+             className="uploadedImage"
+      handleImageSelect={handleImageSelect}
+      imageSrc={imageSrc}
+      setImageSrc={setImageSrc}
+      style={{
+        width: 318,
+        height: 271,  
+        background: 'gold',
+      }}
+    />
+
+    </div> */}
             {itinerary.map((itinerary) => (
               <article key={itinerary.id}>
                 <div className="edit__content">
