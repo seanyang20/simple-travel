@@ -2,6 +2,7 @@ import React from "react";
 import "./Home.scss";
 import { Link, useHistory} from "react-router-dom";
 import travel from "../../assets/videos/travel.mp4";
+// import sky from "../../assets/images/sky.jpg";
 
 export default function Home() {
     const history = useHistory();
